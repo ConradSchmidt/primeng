@@ -25,7 +25,7 @@ import {DomHandler} from '../dom/domhandler';
                             <th #headerCell *ngFor="#col of columns" [attr.style]="col.style" [attr.class]="col.styleClass"
                                 (click)="sort($event,col)" (mouseenter)="hoveredHeader = $event.target" (mouseleave)="hoveredHeader = null"
                                 [ngClass]="{'ui-state-default ui-unselectable-text':true, 'ui-state-hover': headerCell === hoveredHeader && col.sortable,'ui-sortable-column': col.sortable,'ui-state-active': isSorted(col)}">
-                                <span class="ui-column-title">{{col.header}}</span>
+                                <span class="ui-column-title" *ngIf="col.header" [innerHTML]="col.header"></span>
                                 <span class="ui-sortable-column-icon fa fa-fw fa-sort" *ngIf="col.sortable"
                                      [ngClass]="{'fa-sort-desc': (getSortOrder(col) == -1),'fa-sort-asc': (getSortOrder(col) == 1)}"></span>
                                 <input type="text" pInputText class="ui-column-filter" *ngIf="col.filter" (click)="onFilterInputClick($event)" (keyup)="onFilterKeyup($event.target.value, col.field, col.filterMatchMode)"/>
@@ -35,7 +35,7 @@ import {DomHandler} from '../dom/domhandler';
                             <th #headerCell *ngFor="#col of headerRow.columns" [attr.style]="col.style" [attr.class]="col.styleClass" [attr.colspan]="col.colspan" [attr.rowspan]="col.rowspan"
                                 (click)="sort($event,col)" (mouseenter)="hoveredHeader = $event.target" (mouseleave)="hoveredHeader = null"
                                 [ngClass]="{'ui-state-default ui-unselectable-text':true, 'ui-state-hover': headerCell === hoveredHeader && col.sortable,'ui-sortable-column': col.sortable,'ui-state-active': isSorted(col)}">
-                                <span class="ui-column-title">{{col.header}}</span>
+                                <span class="ui-column-title" [innerHTML]="col.header"></span>
                                 <span class="ui-sortable-column-icon fa fa-fw fa-sort" *ngIf="col.sortable"
                                      [ngClass]="{'fa-sort-desc': (getSortOrder(col) == -1),'fa-sort-asc': (getSortOrder(col) == 1)}"></span>
                                 <input type="text" pInputText class="ui-column-filter" *ngIf="col.filter" (click)="onFilterInputClick($event)" (keyup)="onFilterKeyup($event.target.value, col.field, col.filterMatchMode)"/>
@@ -58,7 +58,7 @@ import {DomHandler} from '../dom/domhandler';
                                 [ngClass]="{'ui-datatable-even':even,'ui-datatable-odd':odd,'ui-state-hover': (selectionMode && rowElement == hoveredRow), 'ui-state-highlight': isSelected(rowData)}">
                             <td *ngFor="#col of columns" [attr.style]="col.style" [attr.class]="col.styleClass"
                                 [ngClass]="{'ui-editable-column':col.editable}" (click)="switchCellToEditMode($event.target,col,rowData)">
-                                <span class="ui-column-title" *ngIf="responsive">{{col.header}}</span>
+                                <span class="ui-column-title" *ngIf="responsive" [innerHTML]="col.header"></span>
                                 <span class="ui-cell-data" *ngIf="!col.template">{{resolveFieldData(rowData,col.field)}}</span>
                                 <span class="ui-cell-data" *ngIf="col.template">
                                     <p-columnTemplateLoader [column]="col" [rowData]="rowData"></p-columnTemplateLoader>
@@ -78,7 +78,7 @@ import {DomHandler} from '../dom/domhandler';
                                 <th #headerCell *ngFor="#col of columns" [attr.style]="col.style" [attr.class]="col.styleClass"
                                     (click)="sort($event,col)" (mouseenter)="hoveredHeader = $event.target" (mouseleave)="hoveredHeader = null"
                                     [ngClass]="{'ui-state-default ui-unselectable-text':true, 'ui-state-hover': headerCell === hoveredHeader && col.sortable,'ui-sortable-column': col.sortable,'ui-state-active': col.field === sortField}">
-                                    <span class="ui-column-title">{{col.header}}</span>
+                                    <span class="ui-column-title" [innerHTML]="col.header"></span>
                                     <span class="ui-sortable-column-icon fa fa-fw fa-sort" *ngIf="col.sortable"
                                          [ngClass]="{'fa-sort-desc': (col.field === sortField) && (sortOrder == -1),'fa-sort-asc': (col.field === sortField) && (sortOrder == 1)}"></span>
                                     <input type="text" pInputText class="ui-column-filter" *ngIf="col.filter" (click)="onFilterInputClick($event)" (keyup)="onFilterKeyup($event.target.value, col.field, col.filterMatchMode)"/>
@@ -95,7 +95,7 @@ import {DomHandler} from '../dom/domhandler';
                                 (click)="onRowClick($event, rowData)" (dblclick)="rowDblclick($event,rowData)"
                                 [ngClass]="{'ui-datatable-even':even,'ui-datatable-odd':odd,'ui-state-hover': (selectionMode && rowElement == hoveredRow), 'ui-state-highlight': isSelected(rowData)}">
                             <td *ngFor="#col of columns" [attr.style]="col.style" [attr.class]="col.styleClass" [ngClass]="{'ui-editable-column':col.editable}" (click)="switchCellToEditMode($event.target,col,rowData)">
-                                <span class="ui-column-title" *ngIf="responsive">{{col.header}}</span>
+                                <span class="ui-column-title" *ngIf="responsive" [innerHTML]="col.header"></span>
                                 <span class="ui-cell-data" *ngIf="!col.template">{{resolveFieldData(rowData,col.field)}}</span>
                                 <span class="ui-cell-data" *ngIf="col.template">
                                     <p-columnTemplateLoader [column]="col" [rowData]="rowData"></p-columnTemplateLoader>
