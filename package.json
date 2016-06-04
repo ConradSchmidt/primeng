@@ -1,6 +1,6 @@
 {
   "name": "primeng",
-  "version": "v1.0.0-beta.2-SNAPSHOT",
+  "version": "v1.0.0-beta.2-xentry.2",
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
@@ -9,16 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/primefaces/primeng.git"
+    "url": "https://github.com/ConradSchmidt/primeng.git"
   },
   "license": "Apache-2.0",
   "peerDependencies": {
-    "angular2": "2.0.0-beta.14",
-    "systemjs": "0.19.25",
+    "angular2": "2.0.0-beta.15",
+    "systemjs": "~0.19.25",
     "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.6",
+    "zone.js": "~0.6.10",
     "primeui": "4.1.7"
   },
   "devDependencies": {
